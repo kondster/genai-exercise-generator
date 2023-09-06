@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.llms import OpenAI
 
 # Langchain config
-llm = OpenAI(temperature=0.7, openai_api_key=st.secrets["api_key"])
+llm = OpenAI(temperature=0.7, openai_api_key=st.secrets["api_key"], max_tokens=1500)
 
 # Streamlit layout settings
 st.set_page_config(page_title="Exercise Generator", layout="wide")
@@ -12,7 +12,7 @@ st.title(":green[Adaptive Exercise] Generator :mortar_board:")
 
 # App description
 st.subheader(
-    ":sparkles: A demonstration of Generative AI's capabilities in Adaptive Learning.:sparkles:",
+    "A demonstration of Generative AI's capabilities in Adaptive Learning.",
     divider="green",
 )
 st.markdown(
@@ -54,15 +54,8 @@ subject = st.sidebar.selectbox(
 
 # Button to generate exercise
 if st.sidebar.button("Generate Exercise"):
-    if subject == "Language":
-        if language == "English":
-            subject = "English"
-        elif language == "French":
-            subject = "French"
-        else:
-            subject = "English"
-
-    prompt = f"""
+    with st.spinner("Generating :robot_face:..."):
+        prompt = f"""
 You are a helpful instructional coach assisting teachers in lesson planning. 
 Your task is to create a top-notch exercise to enhance a student's skills. 
 You have access to the student's prior marks, their current grade, and the subject. 
@@ -76,12 +69,12 @@ Your exercise should encompass the following elements:
 Compose the entire response in {language}.
 """
 
-    # Send the prompt to OpenAI API via Langchain
-    completion = llm(prompt)
+        # Send the prompt to OpenAI API via Langchain
+        completion = llm(prompt)
 
-    if completion:
-        # Display the generated exercise and feedback
-        st.subheader("Generated Exercise :")
-        st.write(completion)
-    else:
-        st.error("Error generating the exercise. Please try again.")
+        if completion:
+            # Display the generated exercise and other informations
+            st.subheader(":sparkles: Generated Exercise :sparkles:")
+            st.write(completion)
+        else:
+            st.error("Error generating the exercise. Please try again.")
