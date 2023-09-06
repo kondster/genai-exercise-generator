@@ -1,8 +1,8 @@
 import streamlit as st
-import openai
+from langchain.llms import OpenAI
 
-# OpenAI config
-openai.api_key = st.secrets["api_key"]
+# Langchain config
+llm = OpenAI(temperature=0.7, openai_api_key=st.secrets["api_key"])
 
 # Streamlit layout settings
 st.set_page_config(page_title="Exercise Generator", layout="wide")
@@ -21,7 +21,7 @@ st.markdown(
 """
 )
 
-# Add selects to the sidebar:
+# Sidebar form:
 language = st.sidebar.selectbox("Output Language", ("English", "French"))
 grade = st.sidebar.selectbox(
     "Grade (EN - FR)",
@@ -76,21 +76,12 @@ Your exercise should encompass the following elements:
 Compose the entire response in {language}.
 """
 
-    # Make an API call to Chat-GPT
-    completion = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt,
-            },
-        ],
-    )
+    # Send the prompt to OpenAI API via Langchain
+    completion = llm(prompt)
 
     if completion:
-        exercise = completion["choices"][0]["message"]["content"]
         # Display the generated exercise and feedback
         st.subheader("Generated Exercise :")
-        st.write(exercise)
+        st.write(completion)
     else:
         st.error("Error generating the exercise. Please try again.")
