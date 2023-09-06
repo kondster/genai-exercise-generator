@@ -1,4 +1,4 @@
-# Adaptive Exercise Generator :mortar_board
+# Adaptive Exercise Generator :mortar_board:
 
 ## Overview
 
