@@ -61,7 +61,7 @@ Your task is to create a top-notch exercise to enhance a student's skills.
 You have access to the student's prior marks, their current grade, and the subject. 
 Given this information, generate a {subject} exercise for the {grade} level, tailored to the student's previous performance: {marks}.
 Your exercise should encompass the following elements:
--Title
+-Title (don't mention the student)
 -Exercise
 -Answers
 -Targeted Learning Objectives
