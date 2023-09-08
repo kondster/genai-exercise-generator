@@ -36,10 +36,10 @@ grade = st.sidebar.selectbox(
 marks = st.sidebar.selectbox(
     "Previous Marks",
     (
-        "Student A (C, D, C, D)",
-        "Student B (B, C, C, D)",
-        "Student C (A, B, B, A)",
-        "Student D (A, A, A, A)",
+        "Student A (A, A, A, A)",
+        "Student B (B, B, B, A)",
+        "Student C (B, C, C, C)",
+        "Student D (C, D, D, D)",
     ),
 )
 
