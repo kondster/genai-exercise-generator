@@ -23,6 +23,7 @@ st.markdown(
 
 # Sidebar form:
 language = st.sidebar.selectbox("Output Language", ("English", "French"))
+
 grade = st.sidebar.selectbox(
     "Grade (EN - FR)",
     (
@@ -31,29 +32,60 @@ grade = st.sidebar.selectbox(
         "12th Grade - Terminale",
     ),
 )
+
 marks = st.sidebar.selectbox(
     "Previous Marks",
     (
-        "Student A (C, C, C, D)",
-        "Student B (B, A, C, D)",
-        "Student C (A, B, A, A)",
+        "Student A (C, D, C, D)",
+        "Student B (B, C, C, D)",
+        "Student C (A, B, B, A)",
         "Student D (A, A, A, A)",
     ),
 )
-subject = st.sidebar.selectbox(
-    "Subject",
-    (
-        "Grammar",
-        "Vocabulary",
-        "Reading Comprehension",
-        "Writing",
-        "Algebra",
-        "Geometry",
-    ),
-)
+
+# Subjects vary depending on the selected grade
+if grade == "4th Grade - CM1":
+    subject = st.sidebar.selectbox(
+        "Subject",
+        (
+            "Grammar",
+            "Vocabulary",
+            "Reading Comprehension",
+            "Writing",
+            "Algebra",
+            "Science",
+        ),
+    )
+elif grade == "8th Grade - 4ème":
+    subject = st.sidebar.selectbox(
+        "Subject",
+        (
+            "Grammar",
+            "Reading Comprehension",
+            "Writing",
+            "Algebra",
+            "Geometry",
+            "Biology",
+        ),
+    )
+elif grade == "12th Grade - Terminale":
+    subject = st.sidebar.selectbox(
+        "Subject",
+        (
+            "Philosophy",
+            "Economy",
+            "Literature",
+            "Algebra",
+            "Geometry",
+        ),
+    )
 
 # Button to generate exercise
 if st.sidebar.button("Generate Exercise"):
+    # Specify the language for a better exercise generation
+    if subject == "Literature":
+        subject = f"{language} Literature"
+
     with st.spinner("Generating :robot_face:..."):
         prompt = f"""
 You are a helpful instructional coach assisting teachers in lesson planning. 

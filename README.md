@@ -1,4 +1,4 @@
-# Adaptive Exercise Generator :mortar_board:
+# Adaptive Exercise Generator :mortar_board
 
 ## Overview
 
@@ -19,7 +19,7 @@ This platform serves as a demonstration of the remarkable capabilities of Genera
    - Select a set of previous marks from the provided options, which include different performance levels.
 
 4. **Select Subject**:
-   - Choose the subject for which you want to generate the exercise. Options include Grammar, Vocabulary, Reading Comprehension, Writing, Algebra, and Geometry.
+   - Choose the subject for which you want to generate the exercise. Options vary depending on the selected grade. For Literature, the generated exercise will focus on the Literature of the selected output language (e.g. French Literature if you select French language).
 
 5. **Generate Exercise**:
    - Click the "Generate Exercise" button to initiate the AI-driven exercise creation process.
