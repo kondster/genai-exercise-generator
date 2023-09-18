@@ -1,4 +1,4 @@
-# GenAI Adaptive Exercise Generator :mortar_board:
+# GenAI Adaptive Exercise Generator :mortar_board
 
 ## Overview
 
@@ -38,4 +38,4 @@ Your feedback are valuable in enhancing this platform further. If you have ideas
 
 Thank you for exploring the potential of Generative AI in adaptive learning with us!
 
-[Link to the App] - Try it now !
+[https://genai-exercise-generator-deza4qcucy8a9k4dzcwf9b.streamlit.app/] - Try it now !
